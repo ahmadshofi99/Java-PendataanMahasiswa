@@ -1,0 +1,72 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<GridPane fx:controller="sample.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <Label text="PENDATAAN MAHASISWA" textFill="purple" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <!--NIM-->
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Label text="NIM"/>
+        <TextField fx:id="tfNIM" focusTraversable="false" promptText="Masukkan NIM"/>
+    </VBox>
+
+    <!--Nama-->
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <Label text="Nama"/>
+        <TextField fx:id="tfNama" focusTraversable="false" promptText="Masukkan Nama"/>
+    </VBox>
+
+    <!--Alamat-->
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <Label text="Alamat"/>
+        <TextField fx:id="tfAlamat" focusTraversable="false" promptText="Masukkan Alamat"/>
+    </VBox>
+
+    <!--Button submit data mahasiswaModel-->
+    <Button fx:id="btnSubmit" text="SUBMIT" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="4" onAction="#onButtonClicked"/>
+
+    <!--TableView untuk menampilkan data mahasiswaModel-->
+    <TableView fx:id="tvDataMahasiswa" GridPane.columnIndex="0" GridPane.rowIndex="7" maxHeight="150">
+        <!--Kolom Di dalam Table-->
+        <columns>
+            <!--Kolom NIM-->
+            <TableColumn text="NIM">
+                <cellFactory>
+                    <!--Properti nim (harus disamakan dengan nama atribut di dalam kelas model yang akan dibut-->
+                    <PropertyValueFactory property="nim"/>
+                </cellFactory>
+            </TableColumn>
+
+            <!--Kolom Nama-->
+            <TableColumn text="Nama">
+                <cellFactory>
+                    <!--Properti nama (harus disamakan dengan nama atribut di dalam kelas model yang akan dibuat-->
+                    <PropertyValueFactory property="nama"/>
+                </cellFactory>
+            </TableColumn>
+
+            <!--Kolom alamat-->
+            <TableColumn text="Alamat">
+                <cellFactory>
+                    <!--Properti alamat (harus disamakan dengan nama atribut di dalam kelas model yang akan dibuat-->
+                    <PropertyValueFactory property="alamat"/>
+                </cellFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <!--Button untuk operasi file(save and load)-->
+    <HBox GridPane.columnIndex="0" GridPane.rowIndex="8" spacing="20">
+        <Button fx:id="btnSave" text="Save Data to File" textAlignment="CENTER" onAction="#onButtonClicked"/>
+        <Button fx:id="btnLoad" text="Load Data From Saved File" textAlignment="CENTER" onAction="#onButtonClicked"/>
+    </HBox>
+</GridPane>
